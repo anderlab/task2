@@ -1,28 +1,6 @@
 
   <ion-content >
-
-    <ion-list>
-      <ion-list-header>
-        BBBBB
-        <ion-icon ion-item (click)="presentAlert()" name="add-circle-outline"></ion-icon>
-      </ion-list-header>
-      <ion-list-header>
-          CCCCCC
-          <ion-icon ion-item (click)="presentAlert()" name="add-circle-outline"></ion-icon>
-        </ion-list-header>
-        <ion-list-header>
-            EEEEEE
-            <ion-icon ion-item (click)="presentAlert()" name="add-circle-outline"></ion-icon>
-          </ion-list-header>
-    </ion-list>
-
-    <ion-fab-button color="warning" (click)="presentConfirm()">Button</ion-fab-button>
-
-    <!--<ion-button color="danger">
-      Holaaaaa
-    </ion-button>-->
-
-    <!--<table>
+    <!-- <table>
       <thead>
         <tr>
           <th>Id</th>
@@ -32,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <ion-item *ngFor="let item of items">
+        <ion-item *ngFor="let item of (results|async)">
           <tr>
             <td>{{item.id}}</td>
             <td>{{item.name }}</td>
@@ -41,5 +19,38 @@
           </tr>
         </ion-item>
       </tbody>
-    </table>-->
+    </table> -->
+
+
+    <!-- <ion-list>
+      <ion-item *ngFor="let item of (results|async)" [routerLink]="['/','detail',item.id]">
+       
+          <td>{{item.id}}</td>
+          <td>{{item.name }}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.date}}</td>
+        
+      </ion-item>
+
+      
+    </ion-list> -->
+
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let item of (results|async)" >
+          <ion-item>
+            {{item.name}}
+          </ion-item>
+          <ion-item-options side="end">
+            <ion-button  color="danger" (click)="delete(item.id)"><ion-icon name="trash"></ion-icon></ion-button>
+            <ion-button color="primary" [routerLink]="['/','detail',item.id]"><ion-icon name="eye"></ion-icon></ion-button>
+          </ion-item-options>
+      
+        </ion-item-sliding>
+      
+      </ion-list>
+      <ion-fab-button side="end"><ion-icon name="add"></ion-icon></ion-fab-button> <!--(click)="presentModal()"-->
+
+
+    
 </ion-content>

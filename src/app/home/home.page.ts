@@ -1,6 +1,7 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 
-import { LoadingController } from '@ionic/angular';
+import {Location} from '@angular/common';
+import {Observable} from 'rxjs'; 
 import { RestApiService } from '../rest-api.service';
 import { AlertController} from '@ionic/angular';
 import { NavController } from '@ionic/angular';
@@ -14,7 +15,7 @@ var a:any;
 })
 
 export class HomePage {
-  constructor(public api: RestApiService, private alertCtrl: AlertController, public navCtrl: NavController) {
+  /*constructor(public api: RestApiService, private alertCtrl: AlertController, public navCtrl: NavController) {
     this.getItems();
     }
 
@@ -99,16 +100,28 @@ export class HomePage {
       });
       a.present();
     }
-  
+  */
   items:any;
+  results: Observable<any>;
+  constructor(public api: RestApiService,private location: Location) {
+    this.getItems();
+  }
   
   getItems() {
-    this.api.getItems()
-    .then(data => {
-      this.items = data;
-      console.log(this.items);
+    this.results=this.api.getItems();
+  }
+  
+  async delete(itemId:string){
+    // this.api.deleteItem(itemId);
+    
+    this.api.deleteItem(itemId)
+    .subscribe(res => {
+      this.location.go('/items');
+    }, err => {
+      console.log(err);
     });
   }
+  
 }
 
 

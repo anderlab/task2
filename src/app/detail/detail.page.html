@@ -1,0 +1,14 @@
+<ion-header>
+  <ion-toolbar *ngIf="item">
+    <ion-back-button defaultHref="/"></ion-back-button>
+    <ion-title>{{item?.name}}</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  {{item.description}}
+  {{item.date}}
+  
+  
+  <button class="btn btn-danger" (click)="deleteItem(item.id)"> Delete</button>
+</ion-content>
