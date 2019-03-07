@@ -22,10 +22,8 @@ export class HomePage {
   async delete(itemId:string){
     // this.api.deleteItem(itemId);
     
-    
     this.api.deleteItem(itemId)
     .subscribe(res => {
-      
       this.location.go('/items');
     }, err => {
       console.log(err);
