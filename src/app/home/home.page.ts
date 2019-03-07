@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 
-
-import { LoadingController } from '@ionic/angular';
+import {Location} from '@angular/common';
+import {Observable} from 'rxjs'; 
 import { RestApiService } from '../rest-api.service';
 
 @Component({
@@ -10,17 +10,26 @@ import { RestApiService } from '../rest-api.service';
   styleUrls: ['home.page.scss'],
 })
 export class HomePage {
-  constructor(public api: RestApiService) {
+  results: Observable<any>;
+  constructor(public api: RestApiService,private location: Location) {
     this.getItems();
-    }
-  
-  items:any;
+  }
   
   getItems() {
-    this.api.getItems()
-    .then(data => {
-      this.items = data;
-      console.log(this.items);
+    this.results=this.api.getItems();
+  }
+  
+  async delete(itemId:string){
+    // this.api.deleteItem(itemId);
+    
+    
+    this.api.deleteItem(itemId)
+    .subscribe(res => {
+      
+      this.location.go('/items');
+    }, err => {
+      console.log(err);
     });
   }
+  
 }

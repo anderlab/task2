@@ -1,8 +1,6 @@
 
   <ion-content >
-  
-
-    <table>
+    <!-- <table>
       <thead>
         <tr>
           <th>Id</th>
@@ -12,7 +10,7 @@
         </tr>
       </thead>
       <tbody>
-        <ion-item *ngFor="let item of items">
+        <ion-item *ngFor="let item of (results|async)">
           <tr>
             <td>{{item.id}}</td>
             <td>{{item.name }}</td>
@@ -21,5 +19,38 @@
           </tr>
         </ion-item>
       </tbody>
-    </table>
+    </table> -->
+
+
+    <!-- <ion-list>
+      <ion-item *ngFor="let item of (results|async)" [routerLink]="['/','detail',item.id]">
+       
+          <td>{{item.id}}</td>
+          <td>{{item.name }}</td>
+          <td>{{item.description}}</td>
+          <td>{{item.date}}</td>
+        
+      </ion-item>
+
+      
+    </ion-list> -->
+
+
+    <ion-list>
+        <ion-item-sliding *ngFor="let item of (results|async)" >
+          <ion-item>
+            {{item.name}}
+          </ion-item>
+          <ion-item-options side="end">
+            <button ion-button  color="danger" (click)="delete(item.id)"><ion-icon name="trash"></ion-icon>Delete</button>
+            <button ion-button color="danger" [routerLink]="['/','detail',item.id]"><ion-icon name="eye"></ion-icon>View</button>
+          </ion-item-options>
+      
+          
+        </ion-item-sliding>
+      </ion-list>
+      <button ion-button  color="danger" (click)="presentModal()"><ion-icon name="add"></ion-icon>Add</button>
+
+
+    
 </ion-content>
