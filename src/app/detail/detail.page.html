@@ -1,6 +1,6 @@
 <ion-header>
   <ion-toolbar *ngIf="item">
-    <ion-back-button defaultHref="/"></ion-back-button>
+    <ion-button class="buttons" color="white" href="home" routerDirection="backward"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
     <ion-title>{{item?.name}}</ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,6 +9,6 @@
   {{item.description}}
   {{item.date}}
   
-  
-  <button class="btn btn-danger" (click)="deleteItem(item.id)"> Delete</button>
+  <button class="btn btn-danger" color="success" href="edit" routerDirection="forward"><ion-icon name="create"></ion-icon></button>
+  <button class="btn btn-danger" color="danger" (click)="deleteItem(item.id)"><ion-icon name="trash"></ion-icon></button>
 </ion-content>

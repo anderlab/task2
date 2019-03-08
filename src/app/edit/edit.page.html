@@ -1,19 +1,16 @@
-<ion-header>
+<ion-header class="background">
   <ion-toolbar>
-    <ion-title>edit</ion-title>
+    <ion-button class="buttons" color="white" href="home" routerDirection="backward"><ion-icon name="arrow-round-back"></ion-icon></ion-button>
   </ion-toolbar>
 </ion-header>
 
-<ion-content padding>
-    <ion-item>
-        <ion-label>Name: </ion-label>
-        <ion-input type="text" placeholder="Hola"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label>Description: </ion-label>
-          <ion-textarea placeholder="Enter more information here..."></ion-textarea>
-        </ion-item>
+<ion-content padding class="background">
+        <ion-title class="titles">Name: </ion-title>
+        <ion-input type="text" placeholder="Name"></ion-input>
 
-      <ion-button>A</ion-button>
-      <ion-button>B</ion-button>
+        <ion-title class="titles">Description: </ion-title>
+        <ion-textarea placeholder="Description"></ion-textarea>
+
+      <ion-button color="danger" class="button2"><ion-icon name="trash"></ion-icon></ion-button>
+      <ion-button color="success" class="button2"><ion-icon name="save"></ion-icon></ion-button>
 </ion-content>
