@@ -107,7 +107,7 @@ export class HomePage {
     this.getItems();
   }
   
-  getItems() {
+  async getItems() {
     this.results=this.api.getItems();
   }
   
@@ -120,6 +120,9 @@ export class HomePage {
     }, err => {
       console.log(err);
     });
+  }
+  ngOnInit() {
+    this.getItems();
   }
   
 }

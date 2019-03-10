@@ -58,16 +58,19 @@ export class RestApiService {
         catchError(this.handleError)
       );
   }
-  private extractData(res: Response) {
-    let body = res;
-    return body || { };
-  }
+
   updateItem(id: string, data): Observable<any> {
     const url = `${apiUrl}/${id}`;
     return this.http.put(url, data, httpOptions)
       .pipe(
         catchError(this.handleError)
       );
+  }
+
+
+  private extractData(res: Response) {
+    let body = res;
+    return body || { };
   }
 }
 
