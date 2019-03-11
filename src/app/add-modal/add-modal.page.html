@@ -8,17 +8,20 @@
   <ion-grid>
     <ion-row>
       <ion-col text-center>
-          Add new Item
+        Add new Item
       </ion-col>
     </ion-row>
     
   </ion-grid>
   <form [formGroup]='newItem'>
     <ion-label class="titles">Name: </ion-label>
-    <ion-input type="text" placeholder="Item name" formControlName='name'></ion-input>
-    
+    <ion-input type="text" placeholder="Item name" formControlName='name' required></ion-input>
+  
     <ion-label class="titles">Description: </ion-label>
-    <ion-textarea placeholder="iItem description" formControlName='description'></ion-textarea>
+    <ion-textarea placeholder="Item description" formControlName='description' required></ion-textarea>
+   
+    <ion-label class="titles">Date: </ion-label>
+    <ion-textarea placeholder="date" formControlName='date'></ion-textarea>
     
     
     <ion-row>

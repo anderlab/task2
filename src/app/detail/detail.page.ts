@@ -25,19 +25,19 @@ export class DetailPage implements OnInit {
     })
   }
   
-  deleteItem(id:string) {
-      this.api.deleteItem(id);
-    }
-  
-  // delete(id){
-  //   this.api.deleteItem(id)
-  //   .subscribe(res => {
-  //     this.router.navigate([ '/tabs', { outlets: { home: 'home' } } ]);
-  //   }, err => {
-  //     console.log(err);
-  
-  //   });
-  // };
+  async delete(itemId:string){
+    // this.api.deleteItem(itemId);
+    
+    this.api.deleteItem(itemId)
+    .subscribe(res => {
+      this.router.navigate(['/home',()=>{
+        location.reload();
+      }])
+      // this.router.navigate(['/home']);
+    }, err => {
+      console.log(err);
+    });
+  }
   
   
   

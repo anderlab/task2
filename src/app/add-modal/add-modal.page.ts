@@ -25,7 +25,8 @@ export class AddModalPage implements OnInit {
     ) {  
       this.newItem = this.formBuilder.group({
         'name' : [null],
-        'description' : [null]
+        'description' : [null],
+        'date': [null],
       });}
       
       ngOnInit() {
@@ -39,6 +40,7 @@ export class AddModalPage implements OnInit {
         await this.api.addItem(this.newItem.value)
         .subscribe(res => {
           let id = res['id'];
+          window.location.reload();
           // this.router.navigate(['/detail/'+id]);
           this.closeModal();
         }, (err) => {

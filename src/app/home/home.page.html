@@ -1,7 +1,7 @@
 
   <ion-content padding >
       <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" [disabled]="false">
-        <ion-refresher-content pullingIcon="arrow-dropdown"
+        <ion-refresher-content  pullingIcon="arrow-dropdown"
         pullingText="Pull to refresh"
         refreshingSpinner="circles"
         refreshingText="Refreshing...">
@@ -14,8 +14,9 @@
             {{item.name}}
           </ion-item>
           <ion-item-options side="end">
-            <ion-button  color="danger" (click)="delete(item.id)"><ion-icon name="trash"></ion-icon></ion-button>
+            
             <ion-button color="primary" [routerLink]="['/','detail',item.id]"><ion-icon name="eye"></ion-icon></ion-button>
+            <ion-button  color="danger" (click)="delete(item.id)"><ion-icon name="trash"></ion-icon></ion-button>
           </ion-item-options>
       
         </ion-item-sliding>
