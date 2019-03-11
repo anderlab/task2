@@ -33,7 +33,7 @@ export class EditPage implements OnInit {
     await this.api.updateItem(this.activatedRoute.snapshot.paramMap.get('id'), this.itemForm.value)
     .subscribe(res => {
         let id = res['id'];
-        this.router.navigate(['/detail', JSON.stringify(id)]);
+        this.router.navigate(['/home']);
       }, (err) => {
         console.log(err);
       });

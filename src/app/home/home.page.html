@@ -1,41 +1,13 @@
 
-  <ion-content >
-    <!-- <table>
-      <thead>
-        <tr>
-          <th>Id</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Date</th>
-        </tr>
-      </thead>
-      <tbody>
-        <ion-item *ngFor="let item of (results|async)">
-          <tr>
-            <td>{{item.id}}</td>
-            <td>{{item.name }}</td>
-            <td>{{item.description}}</td>
-            <td>{{item.date}}</td>
-          </tr>
-        </ion-item>
-      </tbody>
-    </table> -->
-
-
-    <!-- <ion-list>
-      <ion-item *ngFor="let item of (results|async)" [routerLink]="['/','detail',item.id]">
-       
-          <td>{{item.id}}</td>
-          <td>{{item.name }}</td>
-          <td>{{item.description}}</td>
-          <td>{{item.date}}</td>
-        
-      </ion-item>
-
-      
-    </ion-list> -->
-
-
+  <ion-content padding >
+      <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)" [disabled]="false">
+        <ion-refresher-content pullingIcon="arrow-dropdown"
+        pullingText="Pull to refresh"
+        refreshingSpinner="circles"
+        refreshingText="Refreshing...">
+          
+        </ion-refresher-content>
+      </ion-refresher>
     <ion-list>
         <ion-item-sliding *ngFor="let item of (results|async)" >
           <ion-item>
@@ -50,7 +22,7 @@
       </ion-list>
 
       <ion-fab vertical="bottom" horizontal="end" slot="fixed">
-        <ion-fab-button>
+        <ion-fab-button (click)="openModal()">
           <ion-icon name="add" id="add" ></ion-icon>
         </ion-fab-button>
       </ion-fab>
